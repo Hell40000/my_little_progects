@@ -1,0 +1,23 @@
+import os
+import pyautogui
+import time
+from tkinter import Tk, Button
+
+window = Tk()
+window.title("Screenshoter by Hell")
+window.geometry("200x30")
+window.resizable(False, False)
+
+def screenshot():
+    global time
+    cur_time = round(time.time(), 2)
+    fin_path = f"{os.getcwd()}\\{cur_time}.jpg"
+    window.withdraw()
+    time.sleep(0.5)
+    pyautogui.screenshot(f"{fin_path}")
+    window.deiconify()
+
+scr_btn = Button(text="Screenshot", width=30, command=screenshot)
+scr_btn.grid()
+
+window.mainloop()
